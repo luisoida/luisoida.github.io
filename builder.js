@@ -1,3 +1,41 @@
+let linksElement = "sp-links-sec";
+var siteData = null;
+let addHeader = false;
+
+class SPHeader extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({mode:'open'});
+
+        /* construct element */
+        const header = document.createElement('header');
+        header.id = 'sp-header';
+
+        const headText = document.createElement('h1');
+        headText.id = 'sp-site-name';
+        if (siteData !== null && siteData.hasOwnProperty('title')) {
+            headText.textContent = siteData['title'];
+        } else if (siteData === null) {
+            headText.textContent = "Luis Oida";
+        }
+
+        header.appendChild(headText);
+        this.shadowRoot.append(header);
+    }
+
+    connectedCallback() {
+        console.debug('Updating heading element.');
+    }
+
+    disconnectedCallback() {
+        console.debug('Removing heading element.')
+    }
+
+    adoptedCallback() {
+        console.debug('Heading element moved.');
+    }
+}
+
 let getFields = () => {
     fetch('assets/links.json')
         .then((response) => response.json())
@@ -5,8 +43,9 @@ let getFields = () => {
 }
 
 let finalize = (data) => {
-    let section = document.getElementById('lo-primary'); // the link list
-    if (data.hasOwnProperty('title')) {
+    siteData = data;
+    let section = document.getElementById(linksElement); // the link list
+    if (data.hasOwnProperty('title') && addHeader) {
         let heading = document.createElement('h1');
         heading.innerText = data['title'];
         section.appendChild(heading);
@@ -48,3 +87,5 @@ let insertLinks = function(data) {
 }
 
 getFields();
+let registry = window.customElements;
+registry.define('sp-header', SPHeader);
