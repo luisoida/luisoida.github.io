@@ -1,6 +1,9 @@
-let linksElement = "sp-links-sec";
+let linksElement = "lo-links-sec";
 var siteData = null;
 let addHeader = false;
+
+/* TODO: Add feature that allows loading of site data and then add an attribute to all elements that
+ *   enforces a reload of data.  */
 
 class SPHeader extends HTMLElement {
     constructor() {
@@ -9,10 +12,10 @@ class SPHeader extends HTMLElement {
 
         /* construct element */
         const header = document.createElement('header');
-        header.id = 'sp-header';
+        header.id = 'lo-header';
 
         const headText = document.createElement('h1');
-        headText.id = 'sp-site-name';
+        headText.id = 'lo-site-name';
         if (siteData !== null && siteData.hasOwnProperty('title')) {
             headText.textContent = siteData['title'];
         } else if (siteData === null) {
@@ -88,4 +91,4 @@ let insertLinks = function(data) {
 
 getFields();
 let registry = window.customElements;
-registry.define('sp-header', SPHeader);
+registry.define('lo-header', SPHeader);

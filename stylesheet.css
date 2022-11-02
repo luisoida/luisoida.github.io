@@ -14,69 +14,92 @@
     src: url('assets/fonts/Overpass-Italic.ttf');
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --lo-background: #3A3029;
+        --lo-foreground: #BFB3AA;
+        --lo-medium: #827164;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --lo-background: #BFB3AA;
+        --lo-foreground: #3A3029;
+        --lo-medium: #827164;
+    }
+}
+
 body {
-    background-color: #226fea;
-    color: #ffffff;
+    background-color: var(--lo-background);
+    color: var(--lo-foreground);
     margin: auto;
-    font-family: Overpass, Arial, 'Helvetica Neue', Helvetica, Tahoma, 'Microsoft Sans Serif', sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, Tahoma, 'Microsoft Sans Serif', sans-serif;
     font-size: 11pt;
     width: 75vw;
-    min-width: 768px;
+    max-width: 768px;
 }
 
 /* header elements */
 
-header#sp-header {
-
-}
-
-header#sp-header > h1#sp-site-name {
-    font-size: 16pt;
-    font-weight: 400;
+header#lo-header {
     padding: 4pt 0;
-    text-transform: uppercase;
 }
 
-section#sp-links-sec {
+header#lo-header > h1,
+h1#lo-site-name {
+    font-size: 30pt;
+    font-weight: 500;
+    padding: 4pt 0;
+    margin: 0;
+}
+
+nav#lo-navigation {
+    background-color: var(--lo-medium);
+    margin: 2pt -4pt;
+    padding: 2pt 0;
+}
+
+nav#lo-navigation > ul {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     flex-grow: 1;
 }
 
-section#sp-links-sec > * {
+nav#lo-navigation > ul > li {
+    margin: 0 4pt;
+}
+
+nav#lo-navigation > ul > li > * {
     text-align: center;
-    margin: 2pt 4pt;
-    padding: 2pt 5pt;
+    padding: 2pt 4pt;
 }
 
-section#sp-links-sec > *:not(.lo-nor) {
-    border-radius: 15px;
-}
-
-section#sp-links-sec > a:link {
-    border: solid 1px #ffffff;
-    color: #ffffff;
+nav#lo-navigation > ul > li > a:link {
+    color: var(--lo-foreground);
     font-weight: 500;
     text-decoration: inherit;
-    text-transform: uppercase;
-    padding: 0.5em 1em 0.25em;
 }
 
-section#sp-links-sec > a:visited {
-    color: #ffffff;
+nav#lo-navigation > ul > li > a:visited {
+    color: var(--lo-foreground);
 }
 
-section#sp-links-sec > a:hover {
+nav#lo-navigation > ul > li > a:hover {
     box-shadow: 0 3px 7px rgb(0 0 0 / 0.5);
 }
 
-section#sp-links-sec > a:active {
-    border: solid 1px #d1d2d1;
-    color: #cccccc;
+nav#lo-navigation > ul > li > a:active {
+    color: var(--lo-foreground);
     box-shadow: 0 1px 3px rgb(0 0 0 / 0.9);
 }
 
-section#sp-links-sec > a {
-    transition: box-shadow 200ms ease, color 100ms ease-in, border 100ms ease-in;
+nav#lo-navigation > ul > li > a {
+    transition: box-shadow 200ms ease;
+}
+
+ul.lo-no-style {
+    list-style-type: none;
+    padding: 0;
 }
