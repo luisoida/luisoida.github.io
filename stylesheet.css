@@ -19,6 +19,10 @@
         --lo-background: #3A3029;
         --lo-foreground: #BFB3AA;
         --lo-medium: #827164;
+        --lo-lighter: #9B8C81;
+        --lo-deeper: #6D5B50;
+        --lo-deeper-2: #544439;
+        --lo-text-link: #107BD1;
     }
 }
 
@@ -27,6 +31,10 @@
         --lo-background: #BFB3AA;
         --lo-foreground: #3A3029;
         --lo-medium: #827164;
+        --lo-lighter: #9B8C81;
+        --lo-deeper: #6D5B50;
+        --lo-deeper-2: #544439;
+        --lo-text-link: #0068C8;
     }
 }
 
@@ -99,7 +107,7 @@ header#lo-header > h1::before,
 h1#lo-site-name::before {
     display: block;
     content: " ";
-    background-color: var(--lo-foreground);
+    background-color: var(--lo-medium);
     width: 120px;
     height: 0.167em;
     margin-bottom: 6pt;
@@ -107,8 +115,7 @@ h1#lo-site-name::before {
 
 nav#lo-navigation {
     background-color: var(--lo-medium);
-    margin: 2pt -4pt;
-    padding: 2pt 0;
+    margin: 2pt 0;
 }
 
 nav#lo-navigation > ul {
@@ -126,8 +133,9 @@ nav#lo-navigation > ul > li {
 }
 
 nav#lo-navigation > ul > li > * {
+    display: block;
     text-align: center;
-    padding: 2pt 4pt;
+    padding: 6pt 10pt;
 }
 
 nav#lo-navigation > ul > li > a:link {
@@ -141,19 +149,44 @@ nav#lo-navigation > ul > li > a:visited {
 }
 
 nav#lo-navigation > ul > li > a:hover {
-    box-shadow: 0 3px 7px rgb(0 0 0 / 0.5);
+    background-color: var(--lo-deeper);
 }
 
 nav#lo-navigation > ul > li > a:active {
-    color: var(--lo-foreground);
-    box-shadow: 0 1px 3px rgb(0 0 0 / 0.9);
+    background-color: var(--lo-deeper-2);
 }
 
 nav#lo-navigation > ul > li > a {
-    transition: box-shadow 200ms ease;
+    cursor: default;
+    transition: background-color 175ms ease;
 }
 
 ul.lo-no-style {
     list-style-type: none;
     padding: 0;
+}
+
+section > h2:first-child::before {
+    display: block;
+    background-color: var(--lo-medium);
+    content: " ";
+    width: 96pt;
+    height: 2pt;
+    margin-bottom: 8pt;
+}
+
+section > h2 {
+    font-size: 1.75em;
+    font-weight: 500;
+}
+
+/* default styles */
+
+a:link {
+    color: var(--lo-text-link);
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
 }
